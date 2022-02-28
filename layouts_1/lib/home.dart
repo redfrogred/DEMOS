@@ -69,31 +69,53 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50,0,50,20),
+              child: Image.asset('./assets/images/custom_layouts1.png'),
+            ),
             const Padding(
               padding: EdgeInsets.all(20.0),
               child: Text('Choose which layout to view:'),
             ),
-            DropdownButton(
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              
+              child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          decoration: BoxDecoration(
+            // borderRadius: BorderRadius.circular(15.0),
+            border: Border.all(
+                color: Color(0xFF999999), style: BorderStyle.solid, width: 1),
+          ),
+              child: DropdownButton(
+                  underline: SizedBox.shrink(),
+                // Initial DD Value
+                value: dropdownvalue,
+                  
+                // Down Arrow Icon
+                icon: const Icon(Icons.keyboard_arrow_down),    
+                isExpanded: true, //make true to make width 100%  
+                style: const TextStyle(  //te
+                  color: Colors.black, //Font color
+                  fontSize: 18 //font size on dropdown button
                 
-              // Initial DD Value
-              value: dropdownvalue,
+                ),
                 
-              // Down Arrow Icon
-              icon: const Icon(Icons.keyboard_arrow_down),    
-                
-              // Array list of items
-              items: items.map((String items) {
-                return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
-                );
-              }).toList(),
-              onChanged: (String? newValue) { 
-                setState(() {
-                  dropdownvalue = newValue!;
-                  switchPage( newValue );
-                });
-              },
+                // Array list of items
+                items: items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) { 
+                  setState(() {
+                    dropdownvalue = newValue!;
+                    switchPage( newValue );
+                  });
+                },
+              ),
+              ),
             ),
           ],
         ),

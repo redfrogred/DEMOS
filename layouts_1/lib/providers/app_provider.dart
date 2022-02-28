@@ -1,7 +1,26 @@
+// ignore_for_file: prefer_final_fields
+
 import 'package:flutter/material.dart';
 
 class App with ChangeNotifier {
   
+  // Layout Dropdown stuff
+  // 
+  String _mainDropdownvalue = 'Layout Menu';
+
+  String getMainDropdownvalue () {
+    return _mainDropdownvalue;
+  }
+
+  void setMainDropdownvalue ( String str) {
+    _mainDropdownvalue == str;
+  }
+
+
+
+
+
+
   // debug
   static bool debugFlag = true;
   static int beginTimeStamp = DateTime.now().millisecondsSinceEpoch;

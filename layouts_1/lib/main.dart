@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
        debugShowCheckedModeBanner: false,
        theme: ThemeData(
         appBarTheme: const AppBarTheme(
-            backgroundColor: Color(0xFF009900),
+            backgroundColor: Color(0xFF03a9f4),
             foregroundColor: Color(0xFFffffff),
             iconTheme: IconThemeData(color: Color(0xFFffffff)),
             titleTextStyle: TextStyle(
@@ -41,14 +41,22 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
               fontSize: 18,
             ),
           ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
+          //fontFamily: 'Georgia',
+          // Define the default `TextTheme`. Use this to specify the default
+          // text styling for headlines, titles, bodies of text, and more.
+          textTheme: const TextTheme(
+            headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+            headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+            bodyText2: TextStyle(fontSize: 18.0, fontFamily: 'Hind'),
+          ),          
+          elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
               backgroundColor:
                 MaterialStateProperty.all<Color>(const Color(0xFF0099ff)),
               padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.zero),
             ),
           ),          
-       ),
+        ),
       // Screens / Routes      
       initialRoute: '/', routes: {
         '/': (context) => const Home(),

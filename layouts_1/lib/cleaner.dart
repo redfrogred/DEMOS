@@ -47,7 +47,7 @@ class CleanerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(  
       appBar: AppBar (
-        title: Text('Mediaquery: width = ' + _screenWidth.toString()),
+        title: Text('Cleaner: width = ' + _screenWidth.toString()),
       ),
       body: Stack(
         children: <Widget>[
