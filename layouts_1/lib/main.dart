@@ -1,6 +1,10 @@
+// ignore_for_file: no_logic_in_create_state
+
 import 'package:flutter/material.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
+import 'package:layouts_1/classes/config.dart';
+import 'classes/utils.dart';
 import 'providers/app_provider.dart';
 import 'package:layouts_1/home.dart';
 import 'package:layouts_1/rough.dart';
@@ -21,11 +25,14 @@ class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _MyAppState createState() {
+    // Flutter does not like me adding logic here... oh well...
+    Utils.log('<< APP version ' + Config.getFullVersion() + ' loaded! >>');
+    return _MyAppState();
+  }
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  @override
   
   @override
   Widget build(BuildContext context) {

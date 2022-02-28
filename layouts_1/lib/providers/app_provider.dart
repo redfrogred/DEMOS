@@ -8,11 +8,13 @@ class App with ChangeNotifier {
   // 
   String _mainDropdownvalue = 'Layout Menu';
 
-  String getMainDropdownvalue () {
+  String getMainDropdownvalue() {
+    print ('(method) getMainDropdownvalue()');
     return _mainDropdownvalue;
   }
 
-  void setMainDropdownvalue ( String str) {
+  void setMainDropdownvalue ( String? str) {
+    print ('(method) setMainDropdownvalue()');
     _mainDropdownvalue == str;
   }
 
