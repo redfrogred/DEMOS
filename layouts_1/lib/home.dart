@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'classes/config.dart';
+import 'classes/utils.dart';
 import 'providers/app_provider.dart';
-import 'package:layouts_1/home.dart';
-import 'package:layouts_1/rough.dart';
-import 'package:layouts_1/cleaner.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -30,8 +29,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
- // Initial Selected Value
-  String dropdownvalue = 'Layout Menu';   
+
+  @override
+  void initState() {
+    super.initState();
+    Utils.log('initState()');
+ }
+
+ // reset needed values
+ @override
+ void dispose() {
+   Utils.log('dispose()');
+   super.dispose();
+ } 
+ 
+ final  FocusNode userIDFocus = FocusNode();
   
   // List of items in our dropdown menu
   var items = [    
@@ -40,27 +52,39 @@ class _HomePageState extends State<HomePage> {
     'Cleaner Layout',
     'Item 4',
     'Item 5',
+    'Item 6',
+    'Item 7',
+    'Item 8',
+    'Item 9',
+    'Item 10',
+    'Item 11',
+    'Item 12',
+    'Item 13',
+    'Item 14',
+    'Item 15',
+    'Item 16',
+    'Item 17',
   ];
 
   // navigate using Drop Down
   void switchPage( String newValue ) {
     switch(newValue) {
       case 'Rough Layout':
-        print('Rough Layout');
+        Utils.log('(method) switchPage() | /Rough');
         Navigator.pushNamed(context, '/Rough');
-        //Navigator.popUntil(context, ModalRoute.withName(Navigator.defaultRouteName));
         break; // The switch statement must be told to exit, or it will execute every case.
       case 'Cleaner Layout':
-        print('Cleaner Layout');
+        Utils.log('(method) switchPage() | /Cleaner');
         Navigator.of(context).pushNamed('/Cleaner');
         break;
       default:
-        print('Default Layout');
+        Utils.log('(method) switchPage() | default (no action)');
     }
   }
   
   @override
   Widget build(BuildContext context) {
+    final app = context.read<App>();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Layout Menu"),
@@ -79,18 +103,17 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              
               child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           decoration: BoxDecoration(
             // borderRadius: BorderRadius.circular(15.0),
             border: Border.all(
-                color: Color(0xFF999999), style: BorderStyle.solid, width: 1),
+                color: const Color(0xFF999999), style: BorderStyle.solid, width: 1),
           ),
               child: DropdownButton(
-                  underline: SizedBox.shrink(),
+                  underline: const SizedBox.shrink(),
                 // Initial DD Value
-                value: dropdownvalue,
+                value: app.getMainDropdownvalue(),
                   
                 // Down Arrow Icon
                 icon: const Icon(Icons.keyboard_arrow_down),    
@@ -109,8 +132,9 @@ class _HomePageState extends State<HomePage> {
                   );
                 }).toList(),
                 onChanged: (String? newValue) { 
+                  
                   setState(() {
-                    dropdownvalue = newValue!;
+                    app.setMainDropdownvalue(newValue!);
                     switchPage( newValue );
                   });
                 },
