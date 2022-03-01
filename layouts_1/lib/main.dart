@@ -45,7 +45,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             iconTheme: IconThemeData(color: Color(0xFFffffff)),
             titleTextStyle: TextStyle(
               height: 1,
-              fontSize: 18,
+              fontSize: 21,
+              fontFamily: 'Georgia',
             ),
           ),
           //fontFamily: 'Georgia',
