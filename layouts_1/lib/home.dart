@@ -48,10 +48,11 @@ class _HomePageState extends State<HomePage> {
   // List of items in our dropdown menu
   var items = [    
     'Layout Menu',
-    'Rough Layout',
-    'Cleaner Layout',
+    'Clemteach: Rough',
+    'Clemteach: Clean',
     'Item 4',
     'Item 5',
+    /*
     'Item 6',
     'Item 7',
     'Item 8',
@@ -64,16 +65,17 @@ class _HomePageState extends State<HomePage> {
     'Item 15',
     'Item 16',
     'Item 17',
+    */
   ];
 
   // navigate using Drop Down
   void switchPage( String newValue ) {
     switch(newValue) {
-      case 'Rough Layout':
+      case 'Clemteach: Rough':
         Utils.log('(method) switchPage() | /Rough');
         Navigator.pushNamed(context, '/Rough');
         break; // The switch statement must be told to exit, or it will execute every case.
-      case 'Cleaner Layout':
+      case 'Clemteach: Clean':
         Utils.log('(method) switchPage() | /Cleaner');
         Navigator.of(context).pushNamed('/Cleaner');
         break;
@@ -87,7 +89,7 @@ class _HomePageState extends State<HomePage> {
     final app = context.read<App>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Layout Menu"),
+        title: const Text("Custom Layouts 1.0"),
       ),
       body: Center(
         child: Column(
@@ -102,43 +104,40 @@ class _HomePageState extends State<HomePage> {
               child: Text('Choose which layout to view:'),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.fromLTRB(20,20,20,100),
               child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-          decoration: BoxDecoration(
-            // borderRadius: BorderRadius.circular(15.0),
-            border: Border.all(
-                color: const Color(0xFF999999), style: BorderStyle.solid, width: 1),
-          ),
-              child: DropdownButton(
-                  underline: const SizedBox.shrink(),
-                // Initial DD Value
-                value: app.getMainDropdownvalue(),
-                  
-                // Down Arrow Icon
-                icon: const Icon(Icons.keyboard_arrow_down),    
-                isExpanded: true, //make true to make width 100%  
-                style: const TextStyle(  //te
-                  color: Colors.black, //Font color
-                  fontSize: 18 //font size on dropdown button
-                
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                decoration: BoxDecoration(
+                  // borderRadius: BorderRadius.circular(15.0),
+                  border: Border.all(
+                  color: const Color(0xFF999999), style: BorderStyle.solid, width: 1),
                 ),
-                
-                // Array list of items
-                items: items.map((String items) {
-                  return DropdownMenuItem(
-                    value: items,
-                    child: Text(items),
-                  );
-                }).toList(),
-                onChanged: (String? newValue) { 
-                  
-                  setState(() {
-                    app.setMainDropdownvalue(newValue!);
-                    switchPage( newValue );
-                  });
-                },
-              ),
+                child: DropdownButton(
+                  underline: const SizedBox.shrink(),
+                  // Initial DD Value
+                  value: app.getMainDropdownvalue(),
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),    
+                  isExpanded: true, //make true to make width 100%  
+                  style: const TextStyle(  //te
+                    color: Colors.black, //Font color
+                    fontSize: 18 //font size on dropdown button
+                  ),
+                  // Array list of items
+                  items: items.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? newValue) { 
+                    
+                    setState(() {
+                      app.setMainDropdownvalue(newValue!);
+                      switchPage( newValue );
+                    });
+                  },
+                ),
               ),
             ),
           ],
