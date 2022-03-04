@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, avoid_print, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
-import './classes/utils.dart';
+import '../classes/utils.dart';
 
 class Cleaner extends StatefulWidget {
   const Cleaner({Key? key}) : super(key: key);

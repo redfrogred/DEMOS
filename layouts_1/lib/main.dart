@@ -6,9 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:layouts_1/classes/config.dart';
 import 'classes/utils.dart';
 import 'providers/app_provider.dart';
-import 'package:layouts_1/home.dart';
-import 'package:layouts_1/rough.dart';
-import 'package:layouts_1/cleaner.dart';
+import 'package:layouts_1/pages/all.dart';
 
 void main() {
   //FlutterNativeSplash.removeAfter(init);
@@ -69,7 +67,11 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       initialRoute: '/', routes: {
         '/': (context) => const Home(),
         '/Rough': (context) => const Rough(),
-        '/Cleaner': (context) => const Cleaner(),
+        '/Cleaner': (context) => const Cleaner(), 
+        '/Sandbox': (context) => const Sandbox(), 
+        '/Boxes': (context) => const Boxes(),
+        '/GameCover': (context) => const GameCover(),
+        '/Fullscreen': (context) => Fullscreen(),
       }
     );
   }
