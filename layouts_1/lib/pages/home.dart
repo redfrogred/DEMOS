@@ -1,10 +1,11 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'classes/config.dart';
-import 'classes/utils.dart';
-import 'providers/app_provider.dart';
+import '../classes/config.dart';
+import '../classes/utils.dart';
+import '../providers/app_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -48,10 +49,12 @@ class _HomePageState extends State<HomePage> {
   // List of items in our dropdown menu
   var items = [    
     'Layout Menu',
+    'Boxes',
     'Clemteach: Rough',
     'Clemteach: Clean',
-    'Item 4',
-    'Item 5',
+    'Fullscreen',
+    'GameCover',
+    'Sandbox',
     /*
     'Item 6',
     'Item 7',
@@ -71,14 +74,30 @@ class _HomePageState extends State<HomePage> {
   // navigate using Drop Down
   void switchPage( String newValue ) {
     switch(newValue) {
+      case 'Boxes':
+        Utils.log('(method) switchPage() | /Boxes');
+        Navigator.of(context).pushNamed('/Boxes');
+        break;       
       case 'Clemteach: Rough':
         Utils.log('(method) switchPage() | /Rough');
         Navigator.pushNamed(context, '/Rough');
         break; // The switch statement must be told to exit, or it will execute every case.
+      case 'GameCover':
+        Utils.log('(method) switchPage() | /GameCover');
+        Navigator.of(context).pushNamed('/GameCover');
+        break;      
       case 'Clemteach: Clean':
         Utils.log('(method) switchPage() | /Cleaner');
         Navigator.of(context).pushNamed('/Cleaner');
         break;
+      case 'Sandbox':
+        Utils.log('(method) switchPage() | /Sandbox');
+        Navigator.of(context).pushNamed('/Sandbox');
+        break;      
+      case 'Fullscreen':
+        Utils.log('(method) switchPage() | /Fullscreen');
+        Navigator.of(context).pushNamed('/Fullscreen');
+        break;            
       default:
         Utils.log('(method) switchPage() | default (no action)');
     }
@@ -87,9 +106,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final app = context.read<App>();
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
+    //   SystemUiOverlay.top,
+    // ]);    
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Custom Layouts 1.0"),
+        title: Text('Layouts ' + Config.getFullVersion()),
       ),
       body: Center(
         child: Column(
